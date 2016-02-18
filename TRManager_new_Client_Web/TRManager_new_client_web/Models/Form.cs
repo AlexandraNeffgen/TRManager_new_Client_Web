@@ -44,6 +44,10 @@ namespace TRManager_new_client_web.Model
         {
             this.students.Add(s);
         }
+        public List<Student> getStudents()
+        {
+            return this.students;
+        }
         public void setStudents(List<Student> students)
         {
             this.students = students;
