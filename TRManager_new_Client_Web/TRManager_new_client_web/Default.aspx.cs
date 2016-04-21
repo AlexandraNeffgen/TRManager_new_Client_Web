@@ -11,6 +11,7 @@ namespace TRManager_new_client_web
     public partial class _Default : Page
     {
         List<Form> allForms;
+        List<Incident> curIncident;
         protected void Page_Load(object sender, EventArgs e)
         {
             TRWebClient<Form> test = new TRWebClient<Form>("http", "trmanager", "localhost:8080", "form", "addbulk");
@@ -19,6 +20,8 @@ namespace TRManager_new_client_web
             {
                 DropDownList1.Items.Add(f.name);
             }
+
+            incident_Load();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -56,6 +59,23 @@ namespace TRManager_new_client_web
                 if (f.name.Equals(name)) return f;
             }
             return null;
+        }
+
+
+        protected void incident_Load()
+        {
+            TRWebClient<Incident> test = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
+            curIncident = test.getAll();
+            GridView1.DataSource = curIncident;
+            GridView1.DataBind();
+            
+            foreach (Incident i in curIncident)
+            {
+                if (i.department != null)
+                {
+
+                }
+            }
         }
     }
 }
