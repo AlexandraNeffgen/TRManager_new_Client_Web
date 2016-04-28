@@ -19,12 +19,13 @@ namespace TRManager_new_client_web.Model
         public String department { get; set; }
         public String comment { get; set; }
 
-        public Incident(Teacher teacher, Student student, int ticket_ID, String Arrival, String Comment)
+        public Incident(Teacher teacher, Student student, int ticket_ID, String Arrival, String department, String Comment)
         {
             this.teacher = teacher;
             this.student = student;
             this.ticket_ID = ticket_ID;
             this.arrival = Arrival;
+            this.department = department;
             this.comment = Comment;
         }
         [JsonConstructor]

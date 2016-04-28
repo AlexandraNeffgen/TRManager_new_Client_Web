@@ -7,20 +7,18 @@
     
     <h2>Students</h2>
     <Table ID="tb_Geruest">
-        <td>
-    <p>
-        <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="187px" AutoPostBack="True">
-        </asp:DropDownList>
-        
-            
-        
-    </p>
-    <p>
-        <asp:Table ID="Students" runat="server" Width="205px">
-        </asp:Table>
-    </p>
+        <td valign="top">
+            <p>
+                <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="187px" AutoPostBack="True">
+                </asp:DropDownList>
+
+            </p>
+            <p>
+                <asp:Table ID="Students" runat="server" Width="205px">
+                </asp:Table>
+            </p>
         </td>
-        <td>
+        <td valign="top">
 
             <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />

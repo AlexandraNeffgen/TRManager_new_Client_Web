@@ -11,6 +11,7 @@ namespace TRManager_new_client_web
     public partial class _Default : Page
     {
         List<Form> allForms;
+        List<Incident> allIncident;
         List<Incident> curIncident;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -65,17 +66,20 @@ namespace TRManager_new_client_web
         protected void incident_Load()
         {
             TRWebClient<Incident> test = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
-            curIncident = test.getAll();
+            allIncident = test.getAll();
+            curIncident = new List<Incident>();
+            if (allIncident.Count == 0)
+                return;
+            foreach (Incident ii in allIncident)
+            {
+                if (ii.department == "" || String.IsNullOrEmpty(ii.department))
+                    curIncident.Add(ii);
+            }
+            if (curIncident.Count == 0)
+                curIncident.Add(new Incident(0, new Teacher("", "", ""), new Student("", "", new Form("", new Teacher("", "", ""))), 0, "", ""));
             GridView1.DataSource = curIncident;
             GridView1.DataBind();
             
-            foreach (Incident i in curIncident)
-            {
-                if (i.department != null)
-                {
-
-                }
-            }
         }
     }
 }
