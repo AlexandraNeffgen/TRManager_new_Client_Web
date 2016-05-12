@@ -58,5 +58,16 @@ namespace TRManager_new_client_web.Model
             if (!(obj is Incident)) return false;
             return ((Incident)obj).ID == this.ID;
         }
+
+        public bool isCurrent()
+        {
+            return String.IsNullOrEmpty(this.department);
+        }
+
+        public Student getStudent()
+        {
+            return RepositoryUtility.getStudentById(this.student.ID);
+        }
+
     }
 }

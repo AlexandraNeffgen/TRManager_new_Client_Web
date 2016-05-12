@@ -91,5 +91,17 @@ namespace TRManager_new_client_web.Model
             return ((Student)obj).ID == this.ID;
         }
 
+        public List<Incident> getIncidents()
+        {
+            foreach (Incident i in RepositoryUtility.getIncidents())
+            {
+                if (i.getStudent().ID == this.ID)
+                {
+                    this.incidents.Add(i);
+                }
+            }
+            return this.incidents;
+        }
+
     }
 }
