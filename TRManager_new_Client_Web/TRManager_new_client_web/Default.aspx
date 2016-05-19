@@ -34,9 +34,10 @@
             </asp:GridView>
 
         </td>
-        <td>
+        <td style="width: 73px">
 
-            &nbsp;</td>
+            <asp:Button ID="Button1" runat="server" OnClick="addIncident" Text="Button" />
+        </td>
 
         </Table>
         </asp:Content>

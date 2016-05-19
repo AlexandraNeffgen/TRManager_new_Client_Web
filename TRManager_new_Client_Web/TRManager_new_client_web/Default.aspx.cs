@@ -22,6 +22,7 @@ namespace TRManager_new_client_web
                 DropDownList1.Items.Add(f.name);
             }
 
+            RepositoryUtility.refreshData();
             incident_Load();
         }
 
@@ -76,10 +77,20 @@ namespace TRManager_new_client_web
                     curIncident.Add(ii);
             }
             if (curIncident.Count == 0)
-                curIncident.Add(new Incident(0, new Teacher("", "", ""), new Student("", "", new Form("", new Teacher("", "", ""))), 0, "", ""));
+                curIncident.Add(new Incident(0, new Teacher("", "", ""), new Student(0, "", "", new Form("", new Teacher("", "", ""))), 0, "", ""));
             GridView1.DataSource = curIncident;
             GridView1.DataBind();
             
         }
+
+        protected void addIncident(object sender, EventArgs e)
+        {
+            TRWebClient<Incident> test = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
+            test.add(new Incident(allIncident[1].getTeacher(), allIncident[1].getStudent(), 4, "2015-09-28 12:50:00", null ,"testIncident"));
+
+
+
+        }
+
     }
 }

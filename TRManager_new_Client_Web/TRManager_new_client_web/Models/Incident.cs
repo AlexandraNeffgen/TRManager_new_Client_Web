@@ -69,5 +69,9 @@ namespace TRManager_new_client_web.Model
             return RepositoryUtility.getStudentById(this.student.ID);
         }
 
+        public Teacher getTeacher()
+        {
+            return RepositoryUtility.getTeacherById(this.teacher.ID);
+        }
     }
 }

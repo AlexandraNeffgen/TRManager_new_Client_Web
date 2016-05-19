@@ -10,12 +10,13 @@ namespace TRManager_new_client_web.Model
     public class Student
     {
         public int ID { get; set; }
+        public int schild_id { get; set; }
         public String givenname { get; set; }
         public String surname { get; set; }
         public Form form { get; set; }
         private List<Incident> incidents { get; set; }
 
-        public Student(String Givenname, String Surname, Form form)
+        public Student(int schild_id, String Givenname, String Surname, Form form)
         {
             this.incidents = new List<Incident>();
             this.givenname = Givenname;
@@ -23,7 +24,7 @@ namespace TRManager_new_client_web.Model
             this.form = form;
         }
         [JsonConstructor]
-        public Student(int ID, String Givenname, String Surname, Form form, List<Incident> incidents)
+        public Student(int ID, int schild_id, String Givenname, String Surname, Form form, List<Incident> incidents)
         {
             if (incidents == null) this.incidents = new List<Incident>();
             else this.incidents = incidents;
