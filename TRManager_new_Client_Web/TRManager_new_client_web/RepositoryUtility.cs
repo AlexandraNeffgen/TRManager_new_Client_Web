@@ -23,6 +23,7 @@ namespace TRManager_new_client_web
                 incidentRepository = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
                 studentRepository = new TRWebClient<Student>("http", "trmanager", "localhost:8080", "student", "addbulk");
                 teacherRepository = new TRWebClient<Teacher>("http", "trmanager", "localhost:8080", "teacher", "addbulk");
+                refreshData();
             }
             catch(Exception ee)
             {

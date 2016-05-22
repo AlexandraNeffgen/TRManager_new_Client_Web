@@ -67,6 +67,7 @@ namespace TRManager_new_client_web
 
         protected void incident_Load()
         {
+            
             TRWebClient<Incident> test = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
             allIncident = test.getAll();
             curIncident = new List<Incident>();
@@ -129,7 +130,6 @@ namespace TRManager_new_client_web
             Teacher t = RepositoryUtility.getTeacherById(int.Parse(teacher_cb.SelectedItem.Value));
             Incident i = new Incident(0, t, s, 0, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tb_comment.Text);
             RepositoryUtility.addIncident(i);
-            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Vorfall hinzugefügt\");", true);
         }
     }
 }
