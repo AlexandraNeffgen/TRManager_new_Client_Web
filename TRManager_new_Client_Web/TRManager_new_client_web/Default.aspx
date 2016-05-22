@@ -21,8 +21,9 @@
             </p>
         </td>
         <td valign="top">
-
-            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:UpdatePanel ID="gv_update_panel" runat="server">
+             <ContentTemplate>
+            <asp:GridView ID="IncidentGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -34,7 +35,10 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
+                 <asp:Timer ID="second_timer" runat="server" OnTick="second_timer_Tick"></asp:Timer>
+                 </ContentTemplate>
 
+            </asp:UpdatePanel>
         </td>
         <td style="width: 73px">
             <!--- BEGIN MODAL POPUP DIALOG PANEL --->
@@ -45,7 +49,7 @@
                 popupdraghandlecontrolid="PopupHeader" drag="true"
                 backgroundcssclass="ModalPopupBG"></ajaxtoolkit:modalpopupextender>
 
-            <asp:Panel ID="panel_add_incident" style="display: none; border: 1px solid #000" runat="server" OnLoad="panel_add_incident_Load">
+            <asp:Panel ID="panel_add_incident" style="display: none; border: 1px solid #000" runat="server" OnLoad="panel_add_incident_Load" BackColor="White">
                 <div class="HelloWorldPopup">
                     <div class="PopupHeader" id="PopupHeader">Incident anlegen</div>
                     <div class="PopupBody">

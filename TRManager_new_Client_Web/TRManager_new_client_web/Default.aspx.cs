@@ -16,6 +16,7 @@ namespace TRManager_new_client_web
         protected void Page_Load(object sender, EventArgs e)
         {
             RepositoryUtility.initRU();
+            second_timer.Interval = 1000;
             TRWebClient<Form> test = new TRWebClient<Form>("http", "trmanager", "localhost:8080", "form", "addbulk");
             allForms = test.getAll();
             foreach (Form f in allForms)
@@ -80,8 +81,8 @@ namespace TRManager_new_client_web
             }
             if (curIncident.Count == 0)
                 curIncident.Add(new Incident(0, new Teacher("", "", ""), new Student(0, "", "", new Form("", new Teacher("", "", ""))), 0, "", ""));
-            GridView1.DataSource = curIncident;
-            GridView1.DataBind();
+            IncidentGV.DataSource = curIncident;
+            IncidentGV.DataBind();
         }
 
         protected void addIncident(object sender, EventArgs e)
@@ -130,6 +131,18 @@ namespace TRManager_new_client_web
             Teacher t = RepositoryUtility.getTeacherById(int.Parse(teacher_cb.SelectedItem.Value));
             Incident i = new Incident(0, t, s, 0, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tb_comment.Text);
             RepositoryUtility.addIncident(i);
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void second_timer_Tick(object sender, EventArgs e)
+        {
+            foreach(Incident i in curIncident)
+            {
+                DateTime arrival = DateTime.ParseExact(i.arrival, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                TimeSpan between = DateTime.Now - arrival;
+                i.department = between.ToString(@"hh\:mm\:ss");
+            }
+            IncidentGV.DataBind();
         }
     }
 }

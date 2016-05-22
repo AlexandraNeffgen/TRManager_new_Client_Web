@@ -31,13 +31,31 @@ namespace TRManager_new_client_web {
         protected global::System.Web.UI.WebControls.Table Students;
         
         /// <summary>
-        /// GridView1-Steuerelement
+        /// gv_update_panel-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.UpdatePanel gv_update_panel;
+        
+        /// <summary>
+        /// IncidentGV-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView IncidentGV;
+        
+        /// <summary>
+        /// second_timer-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.Timer second_timer;
         
         /// <summary>
         /// btn_add_incident-Steuerelement
