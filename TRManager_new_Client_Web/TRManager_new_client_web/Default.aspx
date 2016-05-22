@@ -23,7 +23,7 @@
         <td valign="top">
             <asp:UpdatePanel ID="gv_update_panel" runat="server">
              <ContentTemplate>
-            <asp:GridView ID="IncidentGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="IncidentGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -34,6 +34,13 @@
                 <SortedAscendingHeaderStyle BackColor="#4D0000" />
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                    <asp:BoundField DataField="ticket_ID" HeaderText="Scheinnummer" SortExpression="ticket_ID" />
+                    <asp:BoundField DataField="arrival" HeaderText="Ankunft" SortExpression="arrival" />
+                    <asp:BoundField DataField="department" HeaderText="Timer" SortExpression="department" />
+                    <asp:BoundField DataField="comment" HeaderText="Kommentar" SortExpression="comment" />
+                </Columns>
             </asp:GridView>
                  <asp:Timer ID="second_timer" runat="server" OnTick="second_timer_Tick"></asp:Timer>
                  </ContentTemplate>
