@@ -15,6 +15,22 @@ namespace TRManager_new_client_web
         public static TRWebClient<Student> studentRepository;
         public static TRWebClient<Teacher> teacherRepository;
 
+        public static bool initRU()
+        {
+            try
+            {
+                formRepository = new TRWebClient<Form>("http", "trmanager", "localhost:8080", "form", "addbulk");
+                incidentRepository = new TRWebClient<Incident>("http", "trmanager", "localhost:8080", "incident", "addbulk");
+                studentRepository = new TRWebClient<Student>("http", "trmanager", "localhost:8080", "student", "addbulk");
+                teacherRepository = new TRWebClient<Teacher>("http", "trmanager", "localhost:8080", "teacher", "addbulk");
+            }
+            catch(Exception ee)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static bool refreshData()
         {
             try

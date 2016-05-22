@@ -38,14 +38,14 @@
         </td>
         <td style="width: 73px">
             <!--- BEGIN MODAL POPUP DIALOG PANEL --->
-            <asp:Button ID="btn_add_incident" runat="server" OnClick="addIncident" Text="Button" />
+            <asp:Button ID="btn_add_incident" runat="server" OnClick="addIncident" Text="Vorfall hinzufügen" />
             <ajaxtoolkit:modalpopupextender id="addIncidentModal" runat="server"
                 cancelcontrolid="btnCancel" okcontrolid="btnOkay"
                 targetcontrolid="btn_add_incident" popupcontrolid="panel_add_incident"
                 popupdraghandlecontrolid="PopupHeader" drag="true"
                 backgroundcssclass="ModalPopupBG"></ajaxtoolkit:modalpopupextender>
 
-            <asp:Panel ID="panel_add_incident" style="display: none; border: 1px solid #000" runat="server">
+            <asp:Panel ID="panel_add_incident" style="display: none; border: 1px solid #000" runat="server" OnLoad="panel_add_incident_Load">
                 <div class="HelloWorldPopup">
                     <div class="PopupHeader" id="PopupHeader">Incident anlegen</div>
                     <div class="PopupBody">
@@ -55,7 +55,15 @@
                         <p>Schüler:</p>
                                 </td>
                                 <td>
-                                    <ajaxToolkit:ComboBox ID="student_cb" runat="server"></ajaxToolkit:ComboBox>
+                                    <asp:ListBox ID="student_cb" runat="server"></asp:ListBox>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td>
+                        <p>Lehrer:</p>
+                                </td>
+                                <td>
+                                    <asp:ListBox ID="teacher_cb" runat="server" OnInit="teacher_cb_Init" OnLoad="teacher_cb_Load"></asp:ListBox>
                                 </td>
                             </tr>
                             <tr>
@@ -69,7 +77,8 @@
                         </table>
                     </div>
                     <div class="Controls">
-                        <asp:Button ID="btnOkay" runat="server" Text="Incident anlegen" />
+                        <asp:Button ID="btnAddIncident" runat="server" Text="Vorfall anlegen" OnClick="btnAddIncident_Click" />
+                        <asp:Button ID="btnOkay" runat="server" OnClick="commitAddIncident" Text="OK" />
                         <asp:Button ID="btnCancel" runat="server" Text="Abbrechen" />    
                     </div>
                 </div>

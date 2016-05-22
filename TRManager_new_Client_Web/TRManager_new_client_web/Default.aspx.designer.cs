@@ -73,7 +73,16 @@ namespace TRManager_new_client_web {
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::AjaxControlToolkit.ComboBox student_cb;
+        protected global::System.Web.UI.WebControls.ListBox student_cb;
+        
+        /// <summary>
+        /// teacher_cb-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox teacher_cb;
         
         /// <summary>
         /// tb_comment-Steuerelement
@@ -83,6 +92,15 @@ namespace TRManager_new_client_web {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_comment;
+        
+        /// <summary>
+        /// btnAddIncident-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddIncident;
         
         /// <summary>
         /// btnOkay-Steuerelement
