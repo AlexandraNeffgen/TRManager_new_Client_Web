@@ -201,6 +201,27 @@ namespace TRManager_new_client_web
         {
             return studentRepository.getAll();
         }
+        
+        public static bool deleteStudent(Student s)
+        {
+            return studentRepository.delete(s);
+        }
+
+        public static bool deleteForm(Form f)
+        {
+            return formRepository.delete(f);
+        }
+
+        public static bool deleteTeacher(Teacher t)
+        {
+            return teacherRepository.delete(t);
+        }
+
+        public static bool deleteIncident(Incident i)
+        {
+            return incidentRepository.delete(i);
+        }
+
         public static Form getFormByName(String name)
         {
             foreach (Form f in internal_store.getF_Container())

@@ -43,7 +43,7 @@ namespace TRManager_new_client_web
             d_request.GetResponse();
         }
 
-        public String add(T obj)
+        public T add(T obj)
         {
             request = WebRequest.Create(protocol+"://" + host + "/" + application_name + "/" + Endpoint) as HttpWebRequest;
             request.Accept = "application/json";
@@ -61,7 +61,35 @@ namespace TRManager_new_client_web
             var stream = response.GetResponseStream();
             var sr = new StreamReader(stream);
             var content = sr.ReadToEnd();
-            return content;
+            return JsonConvert.DeserializeObject<T>(content);
+        }
+
+        public bool delete(T obj)
+        {
+            try
+            {
+                request = WebRequest.Create(protocol + "://" + host + "/" + application_name + "/" + Endpoint) as HttpWebRequest;
+                request.Accept = "application/json";
+                request.ContentType = "application/json";
+                request.Method = "DELETE";
+                ASCIIEncoding encoding = new ASCIIEncoding();
+
+                var serializerSettings = new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.None, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+                Console.WriteLine(JsonConvert.SerializeObject(obj, serializerSettings));
+                Byte[] bytes = encoding.GetBytes(JsonConvert.SerializeObject(obj, serializerSettings));
+                Stream newStream = request.GetRequestStream();
+                newStream.Write(bytes, 0, bytes.Length);
+                newStream.Close();
+                var response = request.GetResponse();
+                var stream = response.GetResponseStream();
+                var sr = new StreamReader(stream);
+                var content = sr.ReadToEnd();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
 
         public List<T> addBulk(List<T> obj)
